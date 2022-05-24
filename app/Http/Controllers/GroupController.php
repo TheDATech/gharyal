@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Group;
 use App\Models\User;
+use App\Models\GroupMessage;
+use Auth;
 use Illuminate\Http\Request;
 
 class GroupController extends Controller
@@ -110,6 +112,34 @@ class GroupController extends Controller
 
     public function convertChatToGroup(Request $request)
     {
-        $user = User::find($request->user_id);
+        $user_ids = [$request->user_id, Auth::User()->id];
+
+        $representatives = User::All();
+        return view('groups.chat_convert_to_group', compact(['user_ids', 'representatives']));
+    }
+
+    public function createCustomGroup(Request $request)
+    {
+        $group = new Group;
+        $group->name = $request->name;
+        $group->description = $request->description;
+        $group->save();
+
+        if (isset($request->groupIcon)) {
+            $group->addMediaFromRequest('groupIcon')->toMediaCollection('groupIcons');
+        }
+
+        $group->representatives()->sync($request->representatives);
+
+        $messsages = User::getAllMessages($request->u_id1, $request->u_id2);
+        foreach($messsages as $messsage) {
+            $message = new GroupMessage();
+            $message->user_id = Auth::User()->id;
+            $message->group_id = $group->id;
+            $message->message = $messsage->message;
+            $message->save();
+        }
+
+        return redirect()->route('chat.index');
     }
 }

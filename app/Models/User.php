@@ -63,6 +63,18 @@ class User extends Authenticatable implements HasMedia
         return Message::where('from_user_id', $from_user_id)->where('to_user_id', Auth::User()->id)->where('is_read', false)->count();
     }
     
+    public static function getAllMessages($user_id, $user_id2)
+    {
+        $messages = Message::where(function($query) use ($user_id) {
+            $query->where('from_user_id',$user_id)
+            ->orWhere('to_user_id',$user_id);
+        })->where(function($query) use ($user_id2) {
+            $query->where('from_user_id', $user_id2)
+            ->orWhere('to_user_id', $user_id2);
+        })->get();
+        return $messages;
+    }
+
     public function groups()
     {
         return $this->belongsToMany(Group::class);

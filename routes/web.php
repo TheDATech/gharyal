@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,7 +30,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', App\Http\Controllers\RoleController::class);
     Route::resource('groups', App\Http\Controllers\GroupController::class);
     Route::post('update-password', [App\Http\Controllers\UserController::class, 'changePassword'])->name('update_password');
-    Route::post('/convert-to-group', [\App\Http\Controllers\GroupController::class, 'convertChatToGroup'])->name('convert-to-group');
+    Route::post('/convert-to-group', [App\Http\Controllers\GroupController::class, 'convertChatToGroup'])->name('convert-to-group');
+    Route::post('/create-group', [App\Http\Controllers\GroupController::class, 'createCustomGroup'])->name('create-group');
 });
 
 Route::get('/status', [App\Http\Controllers\UserController::class, 'userOnlineStatus']);

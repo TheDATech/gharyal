@@ -52,7 +52,6 @@ class Chatmessage extends Component
 
     public function resetFields()
     {
-        $this->to_user_id = "";
         $this->message = "";
     }
 
