@@ -1,15 +1,5 @@
 @extends('layouts.app')
-
-
 @section('content')
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Edit Role</h2>
-        </div>  
-    </div>
-</div>
-
 
 @if (count($errors) > 0)
     <div class="alert alert-danger">
@@ -48,13 +38,13 @@
                                 <strong>Permission:</strong>
                                 @foreach($permission as $value)
                                     <div class="form-check">
-                                        <input class="form-check-input" {{ @(in_array($value->id, $rolePermissions)) ? 'checked' : ''  }}  name="permission[]" value="{{ $value->id }}" id="flexCheckChecked" type="checkbox" value="" checked="" />
-                                        <label class="form-check-label" for="flexCheckChecked">{{ $value->name }}</label>
+                                        <input class="form-check-input" {{ @(in_array($value->id, $rolePermissions)) ? 'checked' : ''  }}  name="permission[]" value="{{ $value->id }}" id="flexCheckChecked_{{ $loop->index }}" type="checkbox"/>
+                                        <label class="form-check-label" for="flexCheckChecked_{{ $loop->index }}">{{ $value->name }}</label>
                                     </div>
                                 @endforeach
                             </div>
                         </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </div>

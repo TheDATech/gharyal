@@ -25,9 +25,12 @@
                     <table class="table table-striped overflow-hidden">
                         <thead>
                             <tr class="btn-reveal-trigger">
-                                <th scope="col">Representative Id</th>
-                                <th scope="col">Representative Name</th>
-                                <th scope="col">Representative Email</th>
+                                <th scope="col">Id</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Country</th>
+                                <th scope="col">City</th>
                                 <th class="text-end" scope="col">Actions</th>
                             </tr>
                         </thead>
@@ -37,6 +40,9 @@
                                 <td>{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
+                                <td>{{ $user->profile->phone ?? "" }}</td>
+                                <td>{{ $user->profile->country ?? "" }}</td>
+                                <td>{{ $user->profile->city ?? "" }}</td>
                                 <td class="text-end">
                                     <div class="dropdown font-sans-serif position-static">
                                         <button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false"><span class="fas fa-ellipsis-h fs--1"></span></button>

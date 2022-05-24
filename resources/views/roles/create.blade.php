@@ -1,17 +1,5 @@
 @extends('layouts.app')
-
-
 @section('content')
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Create New Role</h2>
-        </div>
-        <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('roles.index') }}"> Back</a>
-        </div>
-    </div>
-</div>
 
 @if (count($errors) > 0)
     <div class="alert alert-danger">
@@ -24,30 +12,45 @@
     </div>
 @endif
 
-<form action="{{ route('roles.store') }}" method="post">
-    @csrf
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Name:</strong>
-                <input type="text" name="name" id="name" class="form-control">
+<div class="row g-3 mb-3">
+    <div class="col-lg-12">
+        <div class="card mb-3">
+            <div class="card-header">
+                <div class="row flex-between-end">
+                    <div class="col-auto align-self-center">
+                        <h5 class="mb-0" data-anchor="data-anchor">Role Permissions</h5>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Permission:</strong>
-                <br/>
-                @foreach($permission as $value)
-                    <label>
-                    <input type="checkbox" name="permission[]" id="" value="{{ $value->id }}" class="form-control">    
-                    {{ $value->name }}</label>
-                <br/>
-                @endforeach
+            <div class="card-body bg-light">
+                <form action="{{ route('roles.store') }}" method="post">
+                    @csrf
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>Name:</strong>
+                                <input type="text" name="name" id="name" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>Permission:</strong>
+                                @foreach($permission as $value)
+                                    <div class="form-check">
+                                        <input class="form-check-input" name="permission[]" value="{{ $value->id }}" id="flexCheckChecked_{{ $loop->index }}" type="checkbox" value="{{ $value->id }}" />
+                                        <label class="form-check-label" for="flexCheckChecked_{{ $loop->index }}">{{ $value->name }}</label>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-            <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </div>
-</form>
+</div>
+
 @endsection

@@ -13,6 +13,8 @@ class Chatpanel extends Component
     public $to_group_id;
     public $name;
     public $description;
+    public $group_icon;
+    public $profile;
     public $messages;
     public $show_chat = false;
     public $show_group_chat = false;
@@ -28,6 +30,7 @@ class Chatpanel extends Component
         $group = Group::find($this->to_group_id);
         $this->name = $group->name;
         $this->description = $group->description;
+        $this->group_icon = $group->getFirstMediaUrl('groupIcons', 'thumb');
 
         $this->emit("updateGroupId", $this->to_group_id);
     }
@@ -40,6 +43,7 @@ class Chatpanel extends Component
         $this->show_group_chat = false;
         $user = User::find($this->to_user_id);
         $this->name = $user->name;
+        $this->profile = $user->getFirstMediaUrl('avatars', 'thumb');
 
         foreach($user->messages as $message) {
             $message->is_read = true;

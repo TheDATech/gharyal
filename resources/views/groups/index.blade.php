@@ -25,7 +25,7 @@
                             <tr class="btn-reveal-trigger">
                                 <th scope="col">Group Name</th>
                                 <th scope="col">Description</th>
-                                <th scope="col">Total Users</th>
+                                <th scope="col">Members</th>
                                 <th class="text-end" scope="col">Actions</th>
                             </tr>
                         </thead>

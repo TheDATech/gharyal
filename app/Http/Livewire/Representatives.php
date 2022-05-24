@@ -13,9 +13,6 @@ class Representatives extends Component
     {
         $representatives = User::where('id', '<>', Auth::User()->id)->get();
 
-        // $rep = Message::where('to_user_id', Auth::User()->id)->groupBy('to_user_id')->orderBy('id', 'desc')->get();
-        // dd($rep);
-
         $groups = Group::whereHas('users', function($query) {
             $query->where('user_id', Auth::User()->id);
         })

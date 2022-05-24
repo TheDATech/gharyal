@@ -37,6 +37,7 @@
   <link href="{{ asset('backend/assets/css/user-rtl.min.css') }}" rel="stylesheet" id="user-style-rtl">
   <link href="{{ asset('backend/assets/css/user.min.css') }}" rel="stylesheet" id="user-style-default">
   <link href="{{ asset('backend/vendors/choices/choices.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('backend/vendors/dropzone/dropzone.min.css') }}" rel="stylesheet">
   <script>
     var isRTL = JSON.parse(localStorage.getItem('isRTL'));
     if (isRTL) {
@@ -100,10 +101,12 @@
   <script src="{{ asset('backend/vendors/lodash/lodash.min.js') }}"></script>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
   <script src="{{ asset('backend/vendors/list.js/list.min.js') }}"></script>
-  <script src="{{ asset('backend/assets/js/theme.js') }}"></script>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
   <script src="{{ asset('backend/assets/js/emoji-button.js') }}"></script>
   <script src="{{ asset('backend/vendors/choices/choices.min.js') }}"></script>
+  <script src="{{ asset('backend/vendors/dropzone/dropzone.min.js') }}"></script>
+  <script src="{{ asset('backend/assets/js/theme.js') }}"></script>
+
   @livewireScripts
 </body>
 

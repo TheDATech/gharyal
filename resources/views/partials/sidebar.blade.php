@@ -10,7 +10,7 @@
 
             <button class="btn navbar-toggler-humburger-icon navbar-vertical-toggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
 
-        </div><a class="navbar-brand" href="../index.html">
+        </div><a class="navbar-brand" href="#">
             <div class="d-flex align-items-center py-3">
                 <img class="me-2" src="{{ asset('backend/assets/img/icons/spot-illustrations/falcon.png') }}" alt="" width="150" />
             </div>
@@ -22,19 +22,19 @@
                 <li class="nav-item">
 
                     <!-- parent pages--><a class="nav-link" href="{{ route('home') }}" role="button" aria-expanded="false">
-                        <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-chart-pie"></span></span><span class="nav-link-text ps-1">Dashboard</span>
+                        <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-tachometer-alt"></span></span><span class="nav-link-text ps-1">Dashboard</span>
                         </div>
                     </a>
                     <!-- parent pages--><a class="nav-link" href="{{ route('chat.index') }}" role="button" aria-expanded="false">
-                                        <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-chart-pie"></span></span><span class="nav-link-text ps-1">Chat</span>
+                                        <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-headset"></span></span><span class="nav-link-text ps-1">Chat</span>
                         </div>
                     </a>
                     <!-- parent pages--><a class="nav-link" href="{{ route('groups.index') }}" role="button" aria-expanded="false">
-                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-chart-pie"></span></span><span class="nav-link-text ps-1">Groups</span>
+                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-users"></span></span><span class="nav-link-text ps-1">Groups</span>
                         </div>
                     </a>
                     <!-- parent pages--><a class="nav-link dropdown-indicator" href="#roles" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="user">
-                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-user"></span></span><span class="nav-link-text ps-1">Roles</span>
+                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-user-tag"></span></span><span class="nav-link-text ps-1">Roles</span>
                         </div>
                     </a>
                     <ul class="nav collapse false" id="roles">

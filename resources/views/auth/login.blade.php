@@ -10,7 +10,7 @@
     <!-- ===============================================-->
     <!--    Document Title-->
     <!-- ===============================================-->
-    <title>Falcon | Dashboard &amp; Web App Template</title>
+    <title>{{ config('app.name', 'Ghryal') }}</title>
 
 
     <!-- ===============================================-->
@@ -71,14 +71,14 @@
           }
         </script>
         <div class="row flex-center min-vh-100 py-6">
-          <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4"><a class="d-flex flex-center mb-4" href="index.html"><img class="me-2" src="{{ asset('backend/assets/img/icons/spot-illustrations/falcon.png') }}" alt="" width="58" /><span class="font-sans-serif fw-bolder fs-5 d-inline-block">falcon</span></a>
+          <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4"><a class="d-flex flex-center mb-4" href="index.html"><img class="me-2" src="{{ asset('backend/assets/img/icons/spot-illustrations/falcon.png') }}" alt="" width="150" /><span class="font-sans-serif fw-bolder fs-5 d-inline-block"></span></a>
             <div class="card">
               <div class="card-body p-4 p-sm-5">
                 <div class="row flex-between-center mb-2">
                   <div class="col-auto">
                     <h5>{{ __('Login') }}</h5>
                   </div>
-                  <div class="col-auto fs--1 text-600"><span class="mb-0 undefined">or</span> <span><a href="../../../pages/authentication/simple/register.html">Create an account</a></span></div>
+                  <div class="col-auto fs--1 text-600"><span class="mb-0 undefined">or</span> <span><a href="{{ route('register') }}">Create an account</a></span></div>
 
                 </div>
                 <form action="{{ route('login') }}" method="POST">

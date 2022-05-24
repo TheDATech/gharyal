@@ -19,7 +19,7 @@
             <div class="card-header">
                 <div class="row flex-between-end">
                     <div class="col-auto align-self-center">
-                        <h5 class="mb-0" data-anchor="data-anchor">Register New Representative</h5>
+                        <h5 class="mb-0">Register New Representative</h5>
                     </div>
                 </div>
             </div>

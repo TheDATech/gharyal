@@ -43,6 +43,10 @@ class GroupController extends Controller
         $group->description = $request->description;
         $group->save();
 
+        if (isset($request->groupIcon)) {
+            $group->addMediaFromRequest('groupIcon')->toMediaCollection('groupIcons');
+        }
+
         $group->representatives()->sync($request->representatives);
 
         return redirect()->route('groups.index');
@@ -84,6 +88,11 @@ class GroupController extends Controller
         $group->description = $request->description;
         $group->save();
 
+        if ($request->hasFile('groupIcon')) {
+            $group->media()->delete();
+            $group->addMediaFromRequest('groupIcon')->toMediaCollection('groupIcons');
+        }
+
         $group->representatives()->sync($request->representatives);
         return redirect()->route('groups.index');
     }
@@ -97,5 +106,10 @@ class GroupController extends Controller
     public function destroy(Group $group)
     {
         //
+    }
+
+    public function convertChatToGroup(Request $request)
+    {
+        $user = User::find($request->user_id);
     }
 }

@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div class="card-body bg-light">
-                <form action="{{ route('groups.store') }}" method="POST">
+                <form action="{{ route('groups.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label class="form-label" for="name">Name</label>
@@ -35,6 +35,12 @@
                         <label class="form-label" for="description">Description</label>
                         <input class="form-control" id="description" name="description" type="text" placeholder="Group Description" />
                     </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="group-icon">Group Icon</label>
+                        <input type="file" name="groupIcon" id="group-icon" class="form-control">
+                    </div>
+
                     <div class="mb-3">
                         <label class="form-label" for="representatives">Select Representatives</label>
                         <select class="form-select js-choice" id="organizerMultiple" multiple="multiple" size="1" name="representatives[]" data-options='{"removeItemButton":true,"placeholder":true}'>

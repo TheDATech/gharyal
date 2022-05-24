@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Profile;
+use App\Models\Role as RoleModel;
 use Spatie\Permission\Models\Role;
 use DB;
-use Hash;
 use Carbon\Carbon;
 use Cache;
 use Illuminate\Support\Arr;
+use App\Rules\MatchOldPassword;
+use Illuminate\Support\Facades\Hash;
     
 class UserController extends Controller
 {
@@ -63,15 +66,18 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
-            'roles' => 'required'
         ]);
     
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
     
         $user = User::create($input);
-        $user->assignRole($request->input('roles'));
-    
+        $user->assignRole(RoleModel::REPRESENTATIVE_ROLE_ID);
+        
+        $profile = new Profile;
+        $profile->user_id = $user->id;
+        $profile->save();
+
         return redirect()->route('users.index')
                         ->with('success','User created successfully');
     }
@@ -127,11 +133,27 @@ class UserController extends Controller
         }
     
         $user = User::find($id);
-        $user->update($input);
+        $user->update([
+            "name" => $request->name,
+            "email" => $request->email
+        ]);
+
+        $user->profile->update([
+            "phone" => $request->phone,
+            "country" => $request->country,
+            "city" => $request->city,
+            "zipcode" => $request->zipcode,
+            "address" => $request->address,
+        ]);
+
         DB::table('model_has_roles')->where('model_id',$id)->delete();
     
         $user->assignRole($request->input('roles'));
-    
+        
+        if (isset($request->avatar)) {
+            $user->addMediaFromRequest('avatar')->toMediaCollection('avatars');
+        }
+
         return redirect()->route('users.index')
                         ->with('success','User updated successfully');
     }
@@ -147,5 +169,24 @@ class UserController extends Controller
         User::find($id)->delete();
         return redirect()->route('users.index')
                         ->with('success','User deleted successfully');
+    }
+
+    /**
+     * update user password.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function changePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => ['required', new MatchOldPassword],
+            'password' => ['required'],
+            'confirm_password' => ['same:password'],
+        ]);
+   
+        User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
+   
+        return redirect()->route('users.index')
+        ->with('success','Password updated successfully');
     }
 }

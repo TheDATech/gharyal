@@ -46,7 +46,9 @@
                                     <div class="dropdown-menu dropdown-menu-end border py-0">
                                         <div class="bg-white py-2">
                                             <a class="dropdown-item" href="{{ route('roles.show',$role->id) }}">Show</a>
+                                            @can('role-edit')
                                             <a class="dropdown-item" href="{{ route('roles.edit',$role->id) }}">Edit</a>
+                                            @endcan
                                             @can('role-delete')
                                             <a class="dropdown-item text-danger" href="#" onclick="event.preventDefault();
                                                     document.getElementById('role-delete-form').submit();">Delete</a>

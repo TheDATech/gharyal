@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div class="card-body bg-light">
-                <form action="{{ route('groups.update', $group->id) }}" method="POST">
+                <form action="{{ route('groups.update', $group->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="mb-3">
@@ -36,6 +36,12 @@
                         <label class="form-label" for="description">Description</label>
                         <input class="form-control" id="description" name="description" value="{{ $group->description }}" type="text" placeholder="Group Description" />
                     </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="group-icon">Group Icon</label>
+                        <input type="file" name="groupIcon" id="group-icon" class="form-control">
+                    </div>
+
                     <div class="mb-3">
                     <label class="form-label" for="representatives">Select Representatives</label>
                         <select class="form-select js-choice" id="organizerMultiple" multiple="multiple" size="1" name="representatives[]" data-options='{"removeItemButton":true,"placeholder":true}'>

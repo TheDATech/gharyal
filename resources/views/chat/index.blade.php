@@ -6,8 +6,7 @@
             <div class="card-body d-flex p-0 h-100">
                 <div class="chat-sidebar">
                     <livewire:representatives /> 
-                    <div class="border h-100">
-                        
+                    <div class="border h-100">  
                     </div>
                 </div>
                 <div class="tab-content card-chat-content">

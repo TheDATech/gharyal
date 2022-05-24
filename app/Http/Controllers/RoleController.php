@@ -113,7 +113,7 @@ class RoleController extends Controller
         ]);
     
         $role = Role::find($id);
-        $role->name = $request->input('name');
+        $role->name = $request->name;
         $role->save();
     
         $role->syncPermissions($request->input('permission'));

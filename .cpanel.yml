@@ -1,0 +1,5 @@
+---
+deployment:
+ tasks:
+ - export DEPLOYPATH=/home/thedatec/ghariyal.thedatech.com
+ - /bin/cp index.html $DEPLOYPATH
