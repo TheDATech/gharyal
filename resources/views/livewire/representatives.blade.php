@@ -9,7 +9,7 @@
                 @else
                     <div class="avatar avatar-xl status-offline">
                 @endif
-                <img class="rounded-circle" src="{{ $representative->getFirstMediaUrl('avatars', 'thumb') }}" alt="" />
+                <img class="rounded-circle" src="{{ ($representative->getFirstMediaUrl('avatars', 'thumb')) ? $representative->getFirstMediaUrl('avatars', 'thumb') : 'backend/assets/img/team/2.jpg' }}" alt="" />
             </div>
             <div class="flex-1 chat-contact-body ms-2 d-md-none d-lg-block">
                 <div class="d-flex justify-content-between">

@@ -35,17 +35,20 @@
                         <input class="form-control" id="email" name="email" type="email" placeholder="name@example.com" />
                     </div>
                     <div class="mb-3">
+                        <label class="form-label" for="department">Department</label>
+                        <select name="roles[]" id="roles" class="form-control">
+                            <option value="Sales and Marketing">Sales and Marketing</option>
+                            <option value="Technical/Repair Department">Technical/Repair Department</option>
+                            <option value="Customer Support">Customer Support</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
                         <label class="form-label" for="password">Password</label>
                         <input class="form-control" id="password" name="password" type="password" placeholder="Password" />
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="confirm-password">Password</label>
                         <input class="form-control" id="confirm-password" type="password" name="confirm-password" placeholder="Confirm Password" />
-                    </div>
-                    <div class="mb-3">
-                        <select name="roles[]" class="d-none" id="roles">
-                            <option value="Admin"></option>
-                        </select>
                     </div>
                     <button class="btn btn-primary" type="submit">Submit</button>
                 </form>

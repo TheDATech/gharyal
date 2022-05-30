@@ -8,17 +8,270 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
 
         <!-- Styles -->
         <style>
             /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}a{background-color:transparent}[hidden]{display:none}html{font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}*,:after,:before{box-sizing:border-box;border:0 solid #e2e8f0}a{color:inherit;text-decoration:inherit}svg,video{display:block;vertical-align:middle}video{max-width:100%;height:auto}.bg-white{--bg-opacity:1;background-color:#fff;background-color:rgba(255,255,255,var(--bg-opacity))}.bg-gray-100{--bg-opacity:1;background-color:#f7fafc;background-color:rgba(247,250,252,var(--bg-opacity))}.border-gray-200{--border-opacity:1;border-color:#edf2f7;border-color:rgba(237,242,247,var(--border-opacity))}.border-t{border-top-width:1px}.flex{display:flex}.grid{display:grid}.hidden{display:none}.items-center{align-items:center}.justify-center{justify-content:center}.font-semibold{font-weight:600}.h-5{height:1.25rem}.h-8{height:2rem}.h-16{height:4rem}.text-sm{font-size:.875rem}.text-lg{font-size:1.125rem}.leading-7{line-height:1.75rem}.mx-auto{margin-left:auto;margin-right:auto}.ml-1{margin-left:.25rem}.mt-2{margin-top:.5rem}.mr-2{margin-right:.5rem}.ml-2{margin-left:.5rem}.mt-4{margin-top:1rem}.ml-4{margin-left:1rem}.mt-8{margin-top:2rem}.ml-12{margin-left:3rem}.-mt-px{margin-top:-1px}.max-w-6xl{max-width:72rem}.min-h-screen{min-height:100vh}.overflow-hidden{overflow:hidden}.p-6{padding:1.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.pt-8{padding-top:2rem}.fixed{position:fixed}.relative{position:relative}.top-0{top:0}.right-0{right:0}.shadow{box-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06)}.text-center{text-align:center}.text-gray-200{--text-opacity:1;color:#edf2f7;color:rgba(237,242,247,var(--text-opacity))}.text-gray-300{--text-opacity:1;color:#e2e8f0;color:rgba(226,232,240,var(--text-opacity))}.text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.text-gray-500{--text-opacity:1;color:#a0aec0;color:rgba(160,174,192,var(--text-opacity))}.text-gray-600{--text-opacity:1;color:#718096;color:rgba(113,128,150,var(--text-opacity))}.text-gray-700{--text-opacity:1;color:#4a5568;color:rgba(74,85,104,var(--text-opacity))}.text-gray-900{--text-opacity:1;color:#1a202c;color:rgba(26,32,44,var(--text-opacity))}.underline{text-decoration:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.w-5{width:1.25rem}.w-8{width:2rem}.w-auto{width:auto}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}@media (min-width:640px){.sm\:rounded-lg{border-radius:.5rem}.sm\:block{display:block}.sm\:items-center{align-items:center}.sm\:justify-start{justify-content:flex-start}.sm\:justify-between{justify-content:space-between}.sm\:h-20{height:5rem}.sm\:ml-0{margin-left:0}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:pt-0{padding-top:0}.sm\:text-left{text-align:left}.sm\:text-right{text-align:right}}@media (min-width:768px){.md\:border-t-0{border-top-width:0}.md\:border-l{border-left-width:1px}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1024px){.lg\:px-8{padding-left:2rem;padding-right:2rem}}@media (prefers-color-scheme:dark){.dark\:bg-gray-800{--bg-opacity:1;background-color:#2d3748;background-color:rgba(45,55,72,var(--bg-opacity))}.dark\:bg-gray-900{--bg-opacity:1;background-color:#1a202c;background-color:rgba(26,32,44,var(--bg-opacity))}.dark\:border-gray-700{--border-opacity:1;border-color:#4a5568;border-color:rgba(74,85,104,var(--border-opacity))}.dark\:text-white{--text-opacity:1;color:#fff;color:rgba(255,255,255,var(--text-opacity))}.dark\:text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.dark\:text-gray-500{--tw-text-opacity:1;color:#6b7280;color:rgba(107,114,128,var(--tw-text-opacity))}}
         </style>
-
         <style>
-            body {
-                font-family: 'Nunito', sans-serif;
+            #details-sub {
+                margin-top: 15px;
+                width: 100%;
+                background: #5a5eb9;
+                font-size: 21px;
+                color: white !important;
+                border: solid;
+                padding: 5px;
+            }
+                #w3review{
+                    margin-top: 15px;
+                }
+                textarea#w3review {
+                width: 100%;
+            }
+
+            input.form-design {
+                width: 100%;
+                margin-top: 15px;
+                border: solid 1px gray;
+                height: 35px;
+                margin-top: 15px;
+            }
+
+
+
+
+            div#form-content {
+                padding: 9px;
+                text-align: center;
+            }
+                #chat-full-body{
+                    display: none;
+                }
+                html, body {
+            background: #efefef;      
+            height:100%;  
+            }
+            #center-text {          
+            display: flex;
+            flex: 1;
+            flex-direction:column; 
+            justify-content: center;
+            align-items: center;  
+            height:100%;
+            
+            }
+            #chat-circle {
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+            background: #5A5EB9;
+            width: 50px;
+            height: 50px;  
+            border-radius: 50%;
+            color: white;
+            padding: 14px;
+            cursor: pointer;
+            box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.6), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+            }
+
+            .btn#my-btn {
+                background: white;
+                padding-top: 13px;
+                padding-bottom: 12px;
+                border-radius: 45px;
+                padding-right: 40px;
+                padding-left: 40px;
+                color: #5865C3;
+            }
+            #chat-overlay {
+                background: rgba(255,255,255,0.1);
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                display: none;
+            }
+
+
+            .chat-box {
+            display:none;
+            background: #efefef;
+            position:fixed;
+            right:30px;
+            bottom:50px;  
+            width:350px;
+            max-width: 85vw;
+            max-height:100vh;
+            border-radius:5px;  
+            /   box-shadow: 0px 5px 35px 9px #464a92; /
+            box-shadow: 0px 5px 35px 9px #ccc;
+            }
+            .chat-box-toggle {
+            float:right;
+            margin-right:15px;
+            width: 100%;
+            cursor:pointer;
+            }
+            .chat-box-header {
+            background: #5A5EB9;
+            height:70px;
+            border-top-left-radius:5px;
+            border-top-right-radius:5px; 
+            color:white;
+            text-align:center;
+            font-size:20px;
+            padding-top:17px;
+            }
+            .chat-box-body {
+            position: relative;  
+            height:370px;  
+            height:auto;
+            border:1px solid #ccc;  
+            overflow: hidden;
+            }
+            .chat-box-body:after {
+            content: "";
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAgOCkiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PGNpcmNsZSBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMS4yNSIgY3g9IjE3NiIgY3k9IjEyIiByPSI0Ii8+PHBhdGggZD0iTTIwLjUuNWwyMyAxMW0tMjkgODRsLTMuNzkgMTAuMzc3TTI3LjAzNyAxMzEuNGw1Ljg5OCAyLjIwMy0zLjQ2IDUuOTQ3IDYuMDcyIDIuMzkyLTMuOTMzIDUuNzU4bTEyOC43MzMgMzUuMzdsLjY5My05LjMxNiAxMC4yOTIuMDUyLjQxNi05LjIyMiA5LjI3NC4zMzJNLjUgNDguNXM2LjEzMSA2LjQxMyA2Ljg0NyAxNC44MDVjLjcxNSA4LjM5My0yLjUyIDE0LjgwNi0yLjUyIDE0LjgwNk0xMjQuNTU1IDkwcy03LjQ0NCAwLTEzLjY3IDYuMTkyYy02LjIyNyA2LjE5Mi00LjgzOCAxMi4wMTItNC44MzggMTIuMDEybTIuMjQgNjguNjI2cy00LjAyNi05LjAyNS0xOC4xNDUtOS4wMjUtMTguMTQ1IDUuNy0xOC4xNDUgNS43IiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMS4yNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTg1LjcxNiAzNi4xNDZsNS4yNDMtOS41MjFoMTEuMDkzbDUuNDE2IDkuNTIxLTUuNDEgOS4xODVIOTAuOTUzbC01LjIzNy05LjE4NXptNjMuOTA5IDE1LjQ3OWgxMC43NXYxMC43NWgtMTAuNzV6IiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMS4yNSIvPjxjaXJjbGUgZmlsbD0iIzAwMCIgY3g9IjcxLjUiIGN5PSI3LjUiIHI9IjEuNSIvPjxjaXJjbGUgZmlsbD0iIzAwMCIgY3g9IjE3MC41IiBjeT0iOTUuNSIgcj0iMS41Ii8+PGNpcmNsZSBmaWxsPSIjMDAwIiBjeD0iODEuNSIgY3k9IjEzNC41IiByPSIxLjUiLz48Y2lyY2xlIGZpbGw9IiMwMDAiIGN4PSIxMy41IiBjeT0iMjMuNSIgcj0iMS41Ii8+PHBhdGggZmlsbD0iIzAwMCIgZD0iTTkzIDcxaDN2M2gtM3ptMzMgODRoM3YzaC0zem0tODUgMThoM3YzaC0zeiIvPjxwYXRoIGQ9Ik0zOS4zODQgNTEuMTIybDUuNzU4LTQuNDU0IDYuNDUzIDQuMjA1LTIuMjk0IDcuMzYzaC03Ljc5bC0yLjEyNy03LjExNHpNMTMwLjE5NSA0LjAzbDEzLjgzIDUuMDYyLTEwLjA5IDcuMDQ4LTMuNzQtMTIuMTF6bS04MyA5NWwxNC44MyA1LjQyOS0xMC44MiA3LjU1Ny00LjAxLTEyLjk4N3pNNS4yMTMgMTYxLjQ5NWwxMS4zMjggMjAuODk3TDIuMjY1IDE4MGwyLjk0OC0xOC41MDV6IiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMS4yNSIvPjxwYXRoIGQ9Ik0xNDkuMDUgMTI3LjQ2OHMtLjUxIDIuMTgzLjk5NSAzLjM2NmMxLjU2IDEuMjI2IDguNjQyLTEuODk1IDMuOTY3LTcuNzg1LTIuMzY3LTIuNDc3LTYuNS0zLjIyNi05LjMzIDAtNS4yMDggNS45MzYgMCAxNy41MSAxMS42MSAxMy43MyAxMi40NTgtNi4yNTcgNS42MzMtMjEuNjU2LTUuMDczLTIyLjY1NC02LjYwMi0uNjA2LTE0LjA0MyAxLjc1Ni0xNi4xNTcgMTAuMjY4LTEuNzE4IDYuOTIgMS41ODQgMTcuMzg3IDEyLjQ1IDIwLjQ3NiAxMC44NjYgMy4wOSAxOS4zMzEtNC4zMSAxOS4zMzEtNC4zMSIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEuMjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjwvZz48L3N2Zz4=');
+            opacity: 0.1;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            height:100%;
+            position: absolute;
+            z-index: -1;   
+            }
+            #chat-input {
+            background: #f4f7f9;
+            width:100%; 
+            position:relative;
+            height:47px;  
+            padding-top:10px;
+            padding-right:50px;
+            padding-bottom:10px;
+            padding-left:15px;
+            border:none;
+            resize:none;
+            outline:none;
+            border:1px solid #ccc;
+            color:#888;
+            border-top:none;
+            border-bottom-right-radius:5px;
+            border-bottom-left-radius:5px;
+            overflow:hidden;  
+            }
+            .chat-input > form {
+                margin-bottom: 0;
+            }
+            #chat-input::-webkit-input-placeholder { / Chrome/Opera/Safari /
+            color: #ccc;
+            }
+            #chat-input::-moz-placeholder { / Firefox 19+ /
+            color: #ccc;
+            }
+            #chat-input:-ms-input-placeholder { / IE 10+ /
+            color: #ccc;
+            }
+            #chat-input:-moz-placeholder { / Firefox 18- /
+            color: #ccc;
+            }
+            .chat-submit {  
+            position:absolute;
+            bottom:3px;
+            right:10px;
+            background: transparent;
+            box-shadow:none;
+            border:none;
+            border-radius:50%;
+            color:#5A5EB9;
+            width:35px;
+            height:35px;  
+            }
+            .chat-logs {
+            padding:15px; 
+            height:370px;
+            overflow-y:scroll;
+            }
+
+            .chat-logs::-webkit-scrollbar-track
+            {
+                -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+                background-color: #F5F5F5;
+            }
+
+            .chat-logs::-webkit-scrollbar
+            {
+                width: 5px;  
+                background-color: #F5F5F5;
+            }
+
+            .chat-logs::-webkit-scrollbar-thumb
+            {
+                background-color: #5A5EB9;
+            }
+
+
+
+            @media only screen and (max-width: 500px) {
+            .chat-logs {
+                    height:40vh;
+                }
+            }
+
+            .chat-msg.user > .msg-avatar img {
+            width:45px;
+            height:45px;
+            border-radius:50%;
+            float:left;
+            width:15%;
+            }
+            .chat-msg.self > .msg-avatar img {
+            width:45px;
+            height:45px;
+            border-radius:50%;
+            float:right;
+            width:15%;
+            }
+            .cm-msg-text {
+            background:white;
+            padding:10px 15px 10px 15px;  
+            color:#666;
+            max-width:75%;
+            float:left;
+            margin-left:10px; 
+            position:relative;
+            margin-bottom:20px;
+            border-radius:30px;
+            }
+            .chat-msg {
+            clear:both;    
+            }
+            .chat-msg.self > .cm-msg-text {  
+            float:right;
+            margin-right:10px;
+            background: #5A5EB9;
+            color:white;
+            }
+            .cm-msg-button>ul>li {
+            list-style:none;
+            float:left;
+            width:50%;
+            }
+            .cm-msg-button {
+                clear: both;
+                margin-bottom: 70px;
             }
         </style>
+
+ 
     </head>
     <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
@@ -128,5 +381,333 @@
                 </div>
             </div>
         </div>
+
+
+        <div id="body"> 
+    
+            <div id="chat-circle"  class="btn btn-raised" onclick="playVid()">
+                <div id="chat-overlay"></div>
+                    <i class="material-icons">speaker_phone</i>
+            </div>
+  
+            <div class="chat-box">
+            
+                <div class="chat-box-header" id="this-chat-flex"> <span class="back-from" id="btn-back-start"><button  >back</button></span> ChatBot
+                    <span class="chat-box-toggle" id="set-close"><i class="material-icons">close</i></span>
+                </div>
+
+                <div class="video-content-here" id="video-con-control">
+                 
+
+                    <div class="inner-box-first">
+                    <!-- <video id="myVideo" width="320" height="240">
+  <source src="https://au-engage-app.s3.ap-southeast-2.amazonaws.com/ecs/companies/28/f057c42f-9535-4bf1-9aaa-3b04a2288026" type="video/mp4">
+</video> -->
+
+<video id="myVideo" width="320" height="176">
+  <source src="https://au-engage-app.s3.ap-southeast-2.amazonaws.com/ecs/companies/28/f057c42f-9535-4bf1-9aaa-3b04a2288026" type="video/mp4">
+  <source src="https://au-engage-app.s3.ap-southeast-2.amazonaws.com/ecs/companies/28/f057c42f-9535-4bf1-9aaa-3b04a2288026" type="video/ogg">
+  Your browser does not support HTML5 video.
+</video>
+  <div class="div-content-control">
+
+  
+<h2>Explore Exquisite Timepieces</h2>
+<p>Interact by selecting the preferred model:</p>
+
+<button class="start-btn-design"  id="start-chat-run">Start Chat</button>
+
+<button class="start-btn-design"  id="start-chat-run2">Secound Start Chat</button>
+</div>
+
+                    </div>
+
+                    <p>Privacy term and condition  </p>
+                </div>
+
+                <div id="form-content">
+                    <input class="form-design" id="name" placeholder="Name" type="text">
+                    <input class="form-design" id="email" placeholder="Email" type="text">
+                    <select name="department" id="department" class="form-control">
+                        <option value="4">Sales and Marketing</option>
+                        <option value="5">Technical/Repair Department</option>
+                        <option value="6">Customer Support</option>
+                    </select>
+                    <textarea class="form-design" id="message" placeholder="Message" id="w3review" name="w3review" rows="4" cols="50"></textarea>
+                    <button class="form-design" id="details-sub" >submit</button>
+                </div>
+
+                <div id="chat-full-body">
+                    <div class="chat-box-body">
+                        <div class="chat-box-overlay">   </div>
+                        <div class="chat-logs">
+                        
+                        </div><!--chat-log -->
+                    </div>
+                    <div class="chat-input">      
+                        <form>
+                            <input type="text" id="chat-input" placeholder="Send a message..."/>
+                            <button type="submit" class="chat-submit" id="chat-submit"><i class="material-icons">send</i></button>
+                        </form>      
+                    </div>
+
+                </div>
+            </div> 
+        </div>
+
+
+        <style>
+.chat-box-header{
+    display: block;
+}
+div#video-con-control {
+    padding: 35px;
+    padding-bottom: 4px !important;
+}
+
+.inner-box-first {
+    border: solid 1px gray;
+    box-shadow: 0px 0px 7px 1px grey;
+    margin-bottom: 10px !important;
+}
+
+.inner-box-first h2 {
+    font-size: 21px;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+span.chat-box-toggle {
+display: none;
+}
+
+.inner-box-first p {
+    margin-top: 13px;
+}
+
+button#start-chat-run {
+    font-size: 16px;
+    width: 100%;
+    margin-top: 10px;
+    padding: 7px;
+    background: #5a5eb9;
+    color: white;
+}
+
+button#start-chat-run2 {
+    font-size: 16px;
+    width: 100%;
+    margin-top: 10px;
+    padding: 7px;
+    background: #5a5eb9;
+    color: white;
+}
+
+.div-content-control{
+padding:10px;
+}
+            #form-content{
+                display: none;
+            }
+
+            textarea#message {
+    width: 100%;
+    border: solid 1px gray;
+    margin-top: 15px;
+}
+
+#btn-back-start{
+    display: none;
+    width: 100%;
+    border: 0;
+   
+}
+        </style>
+
+        <script>
+
+
+
+
+
+var vid = document.getElementById("myVideo"); 
+
+function playVid() { 
+  vid.play(); 
+} 
+
+
+$("#btn-back-start").click(function(event){
+    $("#video-con-control").css("display", "block");
+    $("#form-content").css("display", "none");
+    $("#btn-back-start").css("display", "none");
+    $("#this-chat-flex").css("display", "block");
+    $("#set-close").css("display", "none");
+});
+
+
+$("#start-chat-run").click(function(event){
+    $("#video-con-control").css("display", "none");
+    $("#form-content").css("display", "block");
+    $("#btn-back-start").css("display", "block");
+    
+    $("#this-chat-flex").css("display", "flex");
+
+    $("#set-close").css("display", "block");
+
+});
+
+$("#start-chat-run2").click(function(event){
+    $("#video-con-control").css("display", "none");
+    $("#form-content").css("display", "block");
+    $("#btn-back-start").css("display", "block");
+    $("#this-chat-flex").css("display", "flex");
+    $("#set-close").css("display", "block");
+});
+
+
+                $("#details-sub").click(function(event){
+                    event.preventDefault();
+                    if( document.getElementById('name').value != ''){
+
+                        var name = document.getElementById('name').value;
+                        var email = document.getElementById('email').value;
+                        var department = document.getElementById('department').value;
+                        var message = document.getElementById('message').value;
+
+                        $.ajax({
+                            type: "POST",
+                            url: 'http://localhost:8000/api/customer/register',
+                            data: {
+                                name: name,
+                                email: email,
+                                department: department,
+                                message: message,
+                            },
+                            success: function(data, status) {           
+                                
+                                document.getElementById('btn-back-start').style.display="none";
+
+                                $("#chat-full-body").css({
+                                    display: "block",
+                                })
+
+                                $("#form-content").css({
+                                    display: "none",
+                                })
+                            },
+                            error: function(error)
+                            {
+                                alert(error);
+                            }
+                        });
+                    }
+                });
+
+            
+
+        </script>
+
+        <script>
+            $(function() {
+                var INDEX = 0; 
+                $("#chat-submit").click(function(e) {
+                    
+                    e.preventDefault();
+                    var msg = $("#chat-input").val(); 
+                    if(msg.trim() == ''){
+                    return false;
+                    }
+                    generate_message(msg, 'self');
+                    var buttons = [
+                        {
+                        name: 'Existing User',
+                        value: 'existing'
+                        },
+                        {
+                        name: 'New User',
+                        value: 'new'
+                        }
+                    ];
+                    setTimeout(function() {      
+                    generate_message(msg, 'user');  
+                    }, 1000)
+                    
+                })
+                
+                function generate_message(msg, type) {
+                    INDEX++;
+                    var str="";
+                    str += "<div id='cm-msg-"+INDEX+"' class=\"chat-msg "+type+"\">";
+                    str += "          <span class=\"msg-avatar\">";
+                    str += "            <img src=\"https:\/\/image.crisp.im\/avatar\/operator\/196af8cc-f6ad-4ef7-afd1-c45d5231387c\/240\/?1483361727745\">";
+                    str += "          <\/span>";
+                    str += "          <div class=\"cm-msg-text\">";
+                    str += msg;
+                    str += "          <\/div>";
+                    str += "        <\/div>";
+                    $(".chat-logs").append(str);
+                    $("#cm-msg-"+INDEX).hide().fadeIn(300);
+                    if(type == 'self'){
+                    $("#chat-input").val(''); 
+                    }    
+                    $(".chat-logs").stop().animate({ scrollTop: $(".chat-logs")[0].scrollHeight}, 1000);    
+                }  
+                
+                function generate_button_message(msg, buttons){    
+                    /* Buttons should be object array 
+                    [
+                        {
+                        name: 'Existing User',
+                        value: 'existing'
+                        },
+                        {
+                        name: 'New User',
+                        value: 'new'
+                        }
+                    ]
+                    */
+                    INDEX++;
+                    var btn_obj = buttons.map(function(button) {
+                    return  "              <li class=\"button\"><a href=\"javascript:;\" class=\"btn btn-primary chat-btn\" chat-value=\""+button.value+"\">"+button.name+"<\/a><\/li>";
+                    }).join('');
+                    var str="";
+                    str += "<div id='cm-msg-"+INDEX+"' class=\"chat-msg user\">";
+                    str += "          <span class=\"msg-avatar\">";
+                    str += "            <img src=\"https:\/\/image.crisp.im\/avatar\/operator\/196af8cc-f6ad-4ef7-afd1-c45d5231387c\/240\/?1483361727745\">";
+                    str += "          <\/span>";
+                    str += "          <div class=\"cm-msg-text\">";
+                    str += msg;
+                    str += "          <\/div>";
+                    str += "          <div class=\"cm-msg-button\">";
+                    str += "            <ul>";   
+                    str += btn_obj;
+                    str += "            <\/ul>";
+                    str += "          <\/div>";
+                    str += "        <\/div>";
+                    $(".chat-logs").append(str);
+                    $("#cm-msg-"+INDEX).hide().fadeIn(300);   
+                    $(".chat-logs").stop().animate({ scrollTop: $(".chat-logs")[0].scrollHeight}, 1000);
+                    $("#chat-input").attr("disabled", true);
+                }
+                
+                $(document).delegate(".chat-btn", "click", function() {
+                    var value = $(this).attr("chat-value");
+                    var name = $(this).html();
+                    $("#chat-input").attr("disabled", false);
+                    generate_message(name, 'self');
+                })
+                
+                $("#chat-circle").click(function() {    
+                    $("#chat-circle").toggle('scale');
+                    $(".chat-box").toggle('scale');
+                })
+                
+                $(".chat-box-toggle").click(function() {
+                    $("#chat-circle").toggle('scale');
+                    $(".chat-box").toggle('scale');
+                })        
+            })
+        </script>
     </body>
 </html>

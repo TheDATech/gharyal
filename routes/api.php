@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/customer/register', [App\Http\Controllers\AuthController::class, 'store']);
+Route::post('/customer/send-message', [App\Http\Controllers\AuthController::class, 'store']);

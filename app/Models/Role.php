@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 class Role extends Model
 {
     public const REPRESENTATIVE_ROLE_ID = 2;
+    public const REPRESENTATIVE_ROLE_NAME = 'Representative';
+    public const CUSTOMER_ROLE_ID = 3;
 
     use HasFactory;
     

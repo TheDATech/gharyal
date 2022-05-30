@@ -5,6 +5,8 @@ namespace App\Http\Livewire;
 use App\Models\GroupMessage;
 use Livewire\Component;
 use App\Models\Message;
+use App\Models\User;
+use App\Models\Role;
 use Auth;
 
 class Chatmessage extends Component
@@ -39,6 +41,15 @@ class Chatmessage extends Component
             $message->message = $this->message;
             $message->is_read = false;
             $message->save();
+
+            $user = User::findOrFail($this->to_user_id);
+            if(in_array(Role::CUSTOMER_ROLE_ID, $user->roles()->pluck('id')->toArray())) {
+                $messages = Message::where('from_user_id', $this->to_user_id)->where('to_user_id', '<>', Auth::User()->id)->get();
+                foreach($messages as $message) {
+                    $message->delete();
+                }
+            }
+
         }elseif(isset($this->to_group_id)) {
             $message = new GroupMessage();
             $message->user_id = Auth::User()->id;

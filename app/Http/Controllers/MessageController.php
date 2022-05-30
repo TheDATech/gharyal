@@ -35,7 +35,18 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(), [
+            'to_user_id' => 'required',
+            'from_user_id' => 'required|email',
+            'message' => 'required'
+        ]);
+
+        $message = new Message();
+        $message->from_user_id = $request->from_user_id;
+        $message->to_user_id = $request->to_user_id;
+        $message->message = $request->message;
+        $message->is_read = false;
+        $message->save();
     }
 
     /**
