@@ -84,4 +84,8 @@ class User extends Authenticatable implements HasMedia
     {
         return $this->hasOne(Profile::class);
     }
+
+    public function mySession() {
+        return $this->hasOne(videoCall::class);
+    }
 }

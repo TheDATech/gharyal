@@ -9,7 +9,7 @@
                 @else
                     <div class="avatar avatar-xl status-offline">
                 @endif
-                <img class="rounded-circle" src="{{ ($representative->getFirstMediaUrl('avatars', 'thumb')) ? $representative->getFirstMediaUrl('avatars', 'thumb') : 'backend/assets/img/team/2.jpg' }}" alt="" />
+                <img class="rounded-circle" src="{{ ($representative->getFirstMediaUrl('avatar', 'thumb')) }}" alt="" />
             </div>
             <div class="flex-1 chat-contact-body ms-2 d-md-none d-lg-block">
                 <div class="d-flex justify-content-between">
@@ -46,7 +46,7 @@
                         <img class="h-50 border-bottom" src="backend/assets/img/team/2.jpg" alt="" />
                         <img class="h-50" src="backend/assets/img/team/3.jpg" alt="" />
                     </div> -->
-                    <img class="rounded-circle" src="{{ $group->getFirstMediaUrl('groupIcons', 'thumb') }}" style="width:32px;height:32px;" alt="">
+                    <img class="rounded-circle" src="{{ $group->getFirstMediaUrl('avatar', 'thumb') }}" style="width:32px;height:32px;" alt="">
                 </div>
             </div>
             <div class="flex-1 chat-contact-body ms-2 d-md-none d-lg-block">

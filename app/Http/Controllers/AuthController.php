@@ -34,17 +34,26 @@ class AuthController extends Controller
             'department' => 'required',
             'message' => 'required'
         ]);
-        
-        $user = User::create([
-            "name" => $request->name, 
-            "email" => $request->email, 
-            "password" => bcrypt('password123')
-        ]);
+
+        $user = User::where('email', $request->email)->first();
+        if(!empty($user)) {
+            // do nothing;
+        }else {
+            $user = User::create([
+                "name" => $request->name, 
+                "email" => $request->email, 
+                "password" => bcrypt('password123')
+            ]);
+        }
         
         $profile = new Profile();
         $profile->user_id = $user->id;
         $profile->user_id = $user->id;
         $profile->save();
+        
+        $rand_color = substr(md5(mt_rand()), 0, 6);
+        $user->addMediaFromURL("https://ui-avatars.com/api/?background=$rand_color&color=fff&name=$request->name&rounded=true")
+         ->toMediaCollection('avatar');
         
         $role = Role::find(Role::CUSTOMER_ROLE_ID);
         $user->assignRole([$role->id]);
@@ -57,9 +66,19 @@ class AuthController extends Controller
             $message->message = $request->message;
             $message->save();
         }
+        
+        
+        
 
+        $role = Role::where('name', $request->department)->first();
         return response()->json([
-            "message" => "successfully chat initiated."
+            "user" => [
+                "name" => $user->name,
+                "email" => $user->email,
+                "user_id" => $user->id,
+                "department_id" => $role->id,
+                "avatar" => $user->getFirstMediaUrl('avatar', 'thumb')
+            ]
         ]);
     }
 

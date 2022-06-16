@@ -10,7 +10,7 @@
   <!-- ===============================================-->
   <!--    Document Title-->
   <!-- ===============================================-->
-  <title>{{ config('app.name', 'Ghryal') }}</title>
+  <title>{{ config('app.name', 'Gharyal') }}</title>
 
 
   <!-- ===============================================-->
@@ -38,6 +38,38 @@
   <link href="{{ asset('backend/assets/css/user.min.css') }}" rel="stylesheet" id="user-style-default">
   <link href="{{ asset('backend/vendors/choices/choices.min.css') }}" rel="stylesheet">
   <link href="{{ asset('backend/vendors/dropzone/dropzone.min.css') }}" rel="stylesheet">
+
+  <style>
+    #videos {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #subscriber {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+    }
+
+    #publisher {
+        position: absolute;
+        width: 360px;
+        height: 240px;
+        bottom: 10px;
+        left: 10px;
+        z-index: 100;
+        border: 3px solid white;
+        border-radius: 3px;
+    }
+
+  </style>
+
   <script>
     var isRTL = JSON.parse(localStorage.getItem('isRTL'));
     if (isRTL) {
@@ -89,6 +121,7 @@
   <!-- ===============================================-->
   <!--    JavaScripts-->
   <!-- ===============================================-->
+  <script src="https://static.opentok.com/v2/js/opentok.min.js"></script>
   <script src="{{ asset('backend/vendors/popper/popper.min.js') }}"></script>
   <script src="{{ asset('backend/vendors/bootstrap/bootstrap.min.js') }}"></script>
   <script src="{{ asset('backend/vendors/anchorjs/anchor.min.js') }}"></script>
@@ -106,7 +139,77 @@
   <script src="{{ asset('backend/vendors/choices/choices.min.js') }}"></script>
   <script src="{{ asset('backend/vendors/dropzone/dropzone.min.js') }}"></script>
   <script src="{{ asset('backend/assets/js/theme.js') }}"></script>
+  <script type="text/javascript">
+    var session;
+    var connectionCount = 0;
+    var apiKey = "{{env('VONAGE_API_KEY')}}";
+    var sessionId = "";
+    var token = "";
+    var publisher;
 
+    function connect() {
+
+        // Replace apiKey and sessionId with your own values:
+
+        session = OT.initSession(apiKey, sessionId);
+        session.on("streamCreated", function (event) {
+            console.log("New stream in the session: " + event.stream.streamId);
+            session.subscribe(event.stream, 'subscriber', {
+                insertMode: 'append',
+                width: '100%',
+                height: '100%'
+            });
+        });
+
+        session.on({
+            connectionCreated: function (event) {
+                connectionCount++;
+                alert(connectionCount + ' connections.');
+            },
+            connectionDestroyed: function (event) {
+                connectionCount--;
+                alert(connectionCount + ' connections.');
+            },
+            sessionDisconnected: function sessionDisconnectHandler(event) {
+                // The event is defined by the SessionDisconnectEvent class
+                alert('Disconnected from the session.');
+                document.getElementById('disconnectBtn').style.display = 'none';
+                if (event.reason == 'networkDisconnected') {
+                    alert('Your network connection terminated.')
+                }
+            }
+        });
+
+        var publisher = OT.initPublisher('publisher', {
+            insertMode: 'append',
+            width: '100%',
+            height: '100%'
+        }, error => {
+            if (error) {
+                alert(error.message);
+            }
+        });
+
+        // Replace token with your own value:
+        session.connect(token, function (error) {
+            if (error) {
+                alert('Unable to connect: ', error.message);
+            } else {
+                // document.getElementById('disconnectBtn').style.display = 'block';
+                alert('Connected to the session.');
+                connectionCount = 1;
+
+                if (session.capabilities.publish == 1) {
+                    session.publish(publisher);
+                } else {
+
+                    alert("You cannot publish an audio-video stream.");
+                }
+            }
+        });
+    }
+    // connect();
+  </script>
   @livewireScripts
 </body>
 

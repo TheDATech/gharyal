@@ -46,7 +46,7 @@
                 @if($message->from_user_id != Auth::User()->id)
                 <div class="d-flex p-3">
                     <div class="avatar avatar-l me-2">
-                        <img class="rounded-circle" src="backend/assets/img/team/2.jpg" alt="" />
+                        <img class="rounded-circle" src="{{ $profile }}" alt="" />
                     </div>
                     <div class="flex-1">
                         <div class="w-xxl-75">
@@ -116,7 +116,7 @@
                 @if($message->user_id != Auth::User()->id)
                 <div class="d-flex p-3">
                     <div class="avatar avatar-l me-2">
-                        <img class="rounded-circle" src="backend/assets/img/team/2.jpg" alt="" />
+                        <img class="rounded-circle" src="{{ $message->profile($message->profile($message->from_user_id)) }}" alt="" />
                     </div>
                     <div class="flex-1">
                         <div class="w-xxl-75">

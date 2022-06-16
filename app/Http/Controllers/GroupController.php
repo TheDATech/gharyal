@@ -134,7 +134,7 @@ class GroupController extends Controller
         $messsages = User::getAllMessages($request->u_id1, $request->u_id2);
         foreach($messsages as $messsage) {
             $message = new GroupMessage();
-            $message->user_id = Auth::User()->id;
+            $message->user_id = $messsage->from_user_id;
             $message->group_id = $group->id;
             $message->message = $messsage->message;
             $message->save();

@@ -43,7 +43,7 @@ class Chatpanel extends Component
         $this->show_group_chat = false;
         $user = User::find($this->to_user_id);
         $this->name = $user->name;
-        $this->profile = $user->getFirstMediaUrl('avatars', 'thumb');
+        $this->profile = $user->getFirstMediaUrl('avatar', 'thumb');
 
         foreach($user->messages as $message) {
             $message->is_read = true;

@@ -32,6 +32,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('update-password', [App\Http\Controllers\UserController::class, 'changePassword'])->name('update_password');
     Route::post('/convert-to-group', [App\Http\Controllers\GroupController::class, 'convertChatToGroup'])->name('convert-to-group');
     Route::post('/create-group', [App\Http\Controllers\GroupController::class, 'createCustomGroup'])->name('create-group');
+    Route::resource("video-call", App\Http\Controllers\VideoCallController::class);
 });
 
 Route::get('/status', [App\Http\Controllers\UserController::class, 'userOnlineStatus']);
