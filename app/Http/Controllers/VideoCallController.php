@@ -59,7 +59,8 @@ class VideoCallController extends Controller
         $token = $opentok->generateToken($sessionId, ['role' => Role::PUBLISHER, 'expireTime' => time() + (7 * 24 * 60 * 60)]);
         return response()->json([
             "session_id" => $sessionId,
-            "token" => $token
+            "token" => $token,
+            "id" => $videoCall->id
         ]);
     }
 
@@ -72,7 +73,8 @@ class VideoCallController extends Controller
     public function show(videoCall $videoCall)
     {
         $sessionId = $videoCall->session_id;
-        $token = $videoCall->token;
+        $opentok = new OpenTok(env('VONAGE_API_KEY'), env('VONAGE_API_SECRET'));
+        $token = $opentok->generateToken($sessionId, ['role' => Role::PUBLISHER, 'expireTime' => time() + (7 * 24 * 60 * 60)]);
         return view('call.index', compact(["sessionId", "token"]));
     }
 

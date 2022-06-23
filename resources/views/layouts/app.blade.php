@@ -107,6 +107,8 @@
       @include('partials.sidebar')
       <div class="content">
         @include('partials.topHeader')
+        
+        
         @yield('content')
         @include('partials.footer')
       </div>
@@ -209,6 +211,85 @@
         });
     }
     // connect();
+
+
+    async function audioCall() {
+      var publisher;
+      var targetElement = 'publisher';
+      var apiKey = "{{env('VONAGE_API_KEY')}}";
+      var sessionId = "{{ $session_id }}";
+      var token = "{{ $token }}";
+      var pubOptions = {videoSource: null};
+      var options = {subscribeToAudio:true, subscribeToVideo:false, audioVolume:10};
+      
+      publisher = OT.initPublisher(targetElement, pubOptions, function(error) {
+        if (error) {
+          alert("The client cannot publish.");
+        } else {
+          console.log('Publisher initialized.');
+        }
+      });
+      session = OT.initSession(apiKey, sessionId);
+      session.connect(token, function (error) {
+          if (error) {
+            console.log("Failed to connect: ", error.message);
+            if (error.name === "OT_NOT_CONNECTED") {
+              alert("You are not connected to the internet. Check your network connection.");
+            }
+          } else {
+            console.log("Connected");
+          }
+      });
+      await sleep(3000);
+           
+      // Setting an audio source to a new MediaStreamTrack
+      const stream = await OT.getUserMedia({
+        videoSource: null
+      });
+
+      const [audioSource] = stream.getAudioTracks();
+      publisher.setAudioSource(audioSource).then(() => console.log('Audio source updated'));
+
+      // Cycling through microphone inputs
+      let audioInputs;
+      let currentIndex = 0;
+      OT.getDevices((err, devices) => {
+        audioInputs = devices.filter((device) => device.kind.toLowerCase() === 'audioInput');
+        // Find the right starting index for cycleMicrophone
+        audioInputs.forEach((device, idx) => {
+          if (device.label === publisher.getAudioSource().label) {
+            currentIndex = idx;
+          }
+        });
+      });
+
+      const cycleMicrophone = () => {
+        currentIndex += 1;
+        let deviceId = audioInputs[currentIndex % audioInputs.length].deviceId;
+        publisher.setAudioSource(deviceId);
+      };
+
+      subscriber = session.subscribe(stream, targetElement, options);
+
+      subscriber.subscribeToAudio(true); // audio on
+      subscriber.subscribeToVideo(false); // video off
+
+      if (!stream.hasAudio) {
+          console.log("Audio call is ongoing.");
+      }
+
+      if (!stream.hasVideo) {
+          console.log("Video call is ongoing.");
+      }
+    }
+
+    function sleep(ms) {
+      return new Promise(
+        resolve => setTimeout(resolve, ms)
+      );
+    }
+   
+  
   </script>
   @livewireScripts
 </body>
