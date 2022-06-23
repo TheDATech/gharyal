@@ -142,76 +142,6 @@
   <script src="{{ asset('backend/vendors/dropzone/dropzone.min.js') }}"></script>
   <script src="{{ asset('backend/assets/js/theme.js') }}"></script>
   <script type="text/javascript">
-    var session;
-    var connectionCount = 0;
-    var apiKey = "{{env('VONAGE_API_KEY')}}";
-    var sessionId = "";
-    var token = "";
-    var publisher;
-
-    function connect() {
-
-        // Replace apiKey and sessionId with your own values:
-
-        session = OT.initSession(apiKey, sessionId);
-        session.on("streamCreated", function (event) {
-            console.log("New stream in the session: " + event.stream.streamId);
-            session.subscribe(event.stream, 'subscriber', {
-                insertMode: 'append',
-                width: '100%',
-                height: '100%'
-            });
-        });
-
-        session.on({
-            connectionCreated: function (event) {
-                connectionCount++;
-                alert(connectionCount + ' connections.');
-            },
-            connectionDestroyed: function (event) {
-                connectionCount--;
-                alert(connectionCount + ' connections.');
-            },
-            sessionDisconnected: function sessionDisconnectHandler(event) {
-                // The event is defined by the SessionDisconnectEvent class
-                alert('Disconnected from the session.');
-                document.getElementById('disconnectBtn').style.display = 'none';
-                if (event.reason == 'networkDisconnected') {
-                    alert('Your network connection terminated.')
-                }
-            }
-        });
-
-        var publisher = OT.initPublisher('publisher', {
-            insertMode: 'append',
-            width: '100%',
-            height: '100%'
-        }, error => {
-            if (error) {
-                alert(error.message);
-            }
-        });
-
-        // Replace token with your own value:
-        session.connect(token, function (error) {
-            if (error) {
-                alert('Unable to connect: ', error.message);
-            } else {
-                // document.getElementById('disconnectBtn').style.display = 'block';
-                alert('Connected to the session.');
-                connectionCount = 1;
-
-                if (session.capabilities.publish == 1) {
-                    session.publish(publisher);
-                } else {
-
-                    alert("You cannot publish an audio-video stream.");
-                }
-            }
-        });
-    }
-    // connect();
-
 
     async function audioCall() {
       var publisher;
@@ -220,8 +150,9 @@
       var sessionId = "{{ $session_id }}";
       var token = "{{ $token }}";
       var pubOptions = {videoSource: null};
-      var options = {subscribeToAudio:true, subscribeToVideo:false, audioVolume:10};
-      
+      var options = {subscribeToAudio:true, subscribeToVideo:false};
+      var session;
+
       publisher = OT.initPublisher(targetElement, pubOptions, function(error) {
         if (error) {
           alert("The client cannot publish.");
@@ -230,7 +161,7 @@
         }
       });
       session = OT.initSession(apiKey, sessionId);
-      session.connect(token, function (error) {
+      session = session.connect(token, function (error) {
           if (error) {
             console.log("Failed to connect: ", error.message);
             if (error.name === "OT_NOT_CONNECTED") {
@@ -241,7 +172,7 @@
           }
       });
       await sleep(3000);
-           
+
       // Setting an audio source to a new MediaStreamTrack
       const stream = await OT.getUserMedia({
         videoSource: null
@@ -269,6 +200,8 @@
         publisher.setAudioSource(deviceId);
       };
 
+
+      // stream = streams['f39c6-ae02-100c-9727-b3bf2'];
       subscriber = session.subscribe(stream, targetElement, options);
 
       subscriber.subscribeToAudio(true); // audio on
